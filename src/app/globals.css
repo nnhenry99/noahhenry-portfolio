@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-heading: var(--font-league-spartan);
+  --font-sans: var(--font-figtree);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Animations ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes scroll-dot {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(8px); opacity: 0.3; }
 }
 
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(12px, -18px) scale(1.04); }
+  66%       { transform: translate(-10px, 10px) scale(0.97); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-16px, 12px) scale(1.06); }
+}
+
+/* Entrance for hero text */
+.animate-fade-up { animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+.animate-scroll-dot {
+  animation: scroll-dot 1.4s ease-in-out infinite;
+}
+
+.animate-float-slow  { animation: float-slow  8s  ease-in-out infinite; }
+.animate-float-medium{ animation: float-medium 6s  ease-in-out infinite; }
+
+/* ── CTA Buttons ── */
+.btn-primary {
+  background-color: rgb(0, 153, 255);
+  color: #ffffff;
+  border: 1.5px solid rgb(0, 153, 255);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.btn-primary:hover {
+  background-color: #ffffff;
+  color: rgb(0, 153, 255);
+  border-color: rgb(0, 153, 255);
+}
+
+.btn-outline {
+  background-color: #ffffff;
+  color: #0a0a0a;
+  border: 1.5px solid #e4e4e7;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.btn-outline:hover {
+  background-color: #ffffff;
+  color: rgb(0, 153, 255);
+  border-color: rgb(0, 153, 255);
+}
+
+/* ── Marquee ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+/* ── Base ── */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #ffffff;
+  color: #0a0a0a;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-league-spartan), system-ui, sans-serif;
 }

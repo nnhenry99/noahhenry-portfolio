@@ -1,65 +1,148 @@
+import Link from "next/link";
 import Image from "next/image";
+import AnimatedSection from "@/components/AnimatedSection";
+import RotatingText from "@/components/RotatingText";
+import ScrollIndicator from "@/components/ScrollIndicator";
+import HeroGradient from "@/components/HeroGradient";
+import ToolMarquee from "@/components/ToolMarquee";
+import { projects } from "@/lib/projects";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      {/* ── Hero ── */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center pt-16 overflow-hidden bg-white">
+        {/* Shader gradient background */}
+        <div aria-hidden="true" className="absolute inset-0">
+          <HeroGradient />
+        </div>
+
+        {/* Hero content */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+          <h1
+            className="animate-fade-up text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight text-[#0a0a0a] leading-[0.95] mb-4"
+            style={{ fontFamily: "var(--font-league-spartan), system-ui, sans-serif" }}
+          >
+            Hi! I&apos;m Noah Henry!
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          {/* Rotating subtitle — min-h prevents layout shift on long strings */}
+          <div
+            className="animate-fade-up delay-200 text-2xl sm:text-3xl font-semibold mb-6"
+            style={{ fontFamily: "var(--font-figtree), system-ui, sans-serif", minHeight: "2.5rem", color: "rgb(0,153,255)" }}
+          >
+            <RotatingText />
+          </div>
+
+          {/* Value statement */}
+          <p className="animate-fade-up delay-300 text-base sm:text-lg text-zinc-400 max-w-md mx-auto mb-10 leading-relaxed">
+            Research-driven designer building digital products people actually enjoy using.
           </p>
+
+          {/* CTAs */}
+          <div className="animate-fade-up delay-400 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/projects"
+              className="btn-primary inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full"
+            >
+              View Work →
+            </Link>
+            <a
+              href="https://calendly.com/your-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full"
+            >
+              Book a call
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Scroll indicator */}
+        <div className="animate-fade-up delay-500 absolute bottom-10 left-1/2 -translate-x-1/2">
+          <ScrollIndicator />
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ── Experienced In ── */}
+      <ToolMarquee />
+
+      {/* ── Recent Work ── */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection className="flex items-end justify-between mb-12">
+            <div>
+              <h2
+                className="text-3xl sm:text-4xl font-bold text-[#0a0a0a] mb-2"
+                style={{ fontFamily: "var(--font-league-spartan), system-ui, sans-serif" }}
+              >
+                Recent Work
+              </h2>
+              <p className="text-zinc-500">
+                Explore my projects to see how my design skills can help you succeed
+              </p>
+            </div>
+            <Link
+              href="/projects"
+              className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-zinc-500 hover:text-[#0a0a0a] transition-colors whitespace-nowrap"
+            >
+              All projects →
+            </Link>
+          </AnimatedSection>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project, i) => (
+              <AnimatedSection key={project.slug} delay={i * 0.08}>
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="group flex flex-col rounded-3xl overflow-hidden border border-zinc-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 h-full"
+                >
+                  {/* Color swatch / cover image */}
+                  <div className={`${project.cardColor} h-52 relative flex flex-col justify-between p-6 shrink-0 overflow-hidden`}>
+                    {project.coverImage && (
+                      <>
+                        <Image
+                          src={project.coverImage}
+                          alt={project.title}
+                          fill
+                          className="object-cover object-center pointer-events-none"
+                          sizes="(max-width: 1024px) 50vw, 33vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                      </>
+                    )}
+                    <div className="relative z-10 flex flex-wrap gap-2">
+                      {project.categories.map(cat => (
+                        <span key={cat} className="text-xs font-semibold px-3 py-1 bg-white/60 backdrop-blur-sm rounded-full text-[#0a0a0a]">
+                          {cat}
+                        </span>
+                      ))}
+                    </div>
+                    <span className={`relative z-10 text-xs font-medium ${project.coverImage ? "text-white/80" : "text-[#0a0a0a]/60"}`}>{project.date}</span>
+                  </div>
+
+                  {/* Info */}
+                  <div className="p-6 bg-white flex flex-col flex-1">
+                    <h3
+                      className="text-xl font-bold text-[#0a0a0a] mb-2 group-hover:opacity-70 transition-opacity"
+                      style={{ fontFamily: "var(--font-league-spartan), system-ui, sans-serif" }}
+                    >
+                      {project.title}
+                    </h3>
+                    {/* Outcome-focused tagline */}
+                    <p className="text-sm text-zinc-500 leading-relaxed flex-1">
+                      {project.tagline}
+                    </p>
+                    <div className="mt-4 text-sm font-semibold text-[#0a0a0a] flex items-center gap-1 group-hover:gap-2 transition-all">
+                      Read case study <span aria-hidden>→</span>
+                    </div>
+                  </div>
+                </Link>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
