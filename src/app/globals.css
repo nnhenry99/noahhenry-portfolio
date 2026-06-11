@@ -77,6 +77,16 @@
   will-change: transform;
 }
 
+/* ── Photo carousel ── */
+@keyframes photo-carousel {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+.animate-photo-carousel {
+  animation: photo-carousel 40s linear infinite;
+  will-change: transform;
+}
+
 /* ── Base ── */
 body {
   -webkit-font-smoothing: antialiased;
