@@ -83,12 +83,8 @@ export default function Navbar() {
 
       {/* ── Mobile: logo + hamburger ── */}
       <div className="md:hidden w-full flex items-center justify-between bg-[rgb(238,238,242)] rounded-full px-5 py-3">
-        <Link
-          href="/"
-          className="font-black text-[#0a0a0a] tracking-tight text-sm"
-          style={{ fontFamily: "var(--font-league-spartan), system-ui, sans-serif" }}
-        >
-          Noah Henry
+        <Link href="/" className="flex items-center justify-center">
+          <Image src="/nh logo-01.svg" alt="Noah Henry" width={30} height={30} />
         </Link>
 
         <button

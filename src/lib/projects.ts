@@ -95,6 +95,7 @@ export const projects: Project[] = [
       {
         heading: "Post-Workout Visualization Prototypes",
         body: "Three Figma prototypes explored how rep tempo data should be presented post-set. All three used the same simulated rep tempo dataset to ensure fair, consistent comparisons across all 10 participants.",
+        media: { type: "image", src: "/projects/hapticcoach/visualization-prototypes.png" },
       },
       {
         heading: "Hybrid Prototype",
