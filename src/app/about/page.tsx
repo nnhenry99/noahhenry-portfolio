@@ -102,7 +102,7 @@ export default function AboutPage() {
                   View work →
                 </Link>
                 <a
-                  href="https://calendly.com/your-link"
+                  href="https://calendly.com/nnhenry99/30min"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-outline inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full"

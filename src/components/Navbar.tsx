@@ -14,7 +14,7 @@ const links = [
   { href: "/contact",  label: "Contact" },
 ];
 
-const BOOK_CALL_URL = "https://calendly.com/your-link";
+const BOOK_CALL_URL = "https://calendly.com/nnhenry99/30min";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
