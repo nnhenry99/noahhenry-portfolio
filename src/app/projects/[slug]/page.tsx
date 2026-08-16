@@ -190,7 +190,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                       <HapticFindingsVisual />
                     ) : section.media ? (
                       section.media.type === "video" ? (
-                        <div className="rounded-2xl overflow-hidden flex justify-center">
+                        <div className="flex justify-center">
                           <video
                             src={section.media.src}
                             autoPlay
@@ -198,7 +198,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                             loop
                             playsInline
                             className="h-auto rounded-2xl"
-                            style={{ maxHeight: "560px", width: "auto", maxWidth: "100%" }}
+                            style={{
+                              maxHeight: "560px",
+                              width: "auto",
+                              maxWidth: "100%",
+                              boxShadow: "0 1px 2px rgba(10,10,10,0.05), 0 8px 24px rgba(10,10,10,0.07)",
+                            }}
                           />
                         </div>
                       ) : (

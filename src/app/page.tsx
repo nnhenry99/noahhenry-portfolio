@@ -99,7 +99,20 @@ export default function HomePage() {
                 >
                   {/* Color swatch / cover image */}
                   <div className={`${project.cardColor} h-52 relative flex flex-col justify-between p-6 shrink-0 overflow-hidden`}>
-                    {project.coverImage && (
+                    {project.coverVideo ? (
+                      <>
+                        <video
+                          src={project.coverVideo}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          aria-hidden="true"
+                          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                      </>
+                    ) : project.coverImage ? (
                       <>
                         <Image
                           src={project.coverImage}
@@ -110,7 +123,7 @@ export default function HomePage() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                       </>
-                    )}
+                    ) : null}
                     <div className="relative z-10 flex flex-wrap gap-2">
                       {project.categories.map(cat => (
                         <span key={cat} className="text-xs font-semibold px-3 py-1 bg-white/60 backdrop-blur-sm rounded-full text-[#0a0a0a]">
@@ -118,7 +131,7 @@ export default function HomePage() {
                         </span>
                       ))}
                     </div>
-                    <span className={`relative z-10 text-xs font-medium ${project.coverImage ? "text-white/80" : "text-[#0a0a0a]/60"}`}>{project.date}</span>
+                    <span className={`relative z-10 text-xs font-medium ${project.coverVideo || project.coverImage ? "text-white/80" : "text-[#0a0a0a]/60"}`}>{project.date}</span>
                   </div>
 
                   {/* Info */}

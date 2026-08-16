@@ -33,7 +33,20 @@ export default function ProjectsPage() {
               >
                 {/* Color swatch / cover image */}
                 <div className={`${project.cardColor} min-h-48 relative flex flex-col justify-between p-8 overflow-hidden`}>
-                  {project.coverImage && (
+                  {project.coverVideo ? (
+                    <>
+                      <video
+                        src={project.coverVideo}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        aria-hidden="true"
+                        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                    </>
+                  ) : project.coverImage ? (
                     <>
                       <Image
                         src={project.coverImage}
@@ -44,7 +57,7 @@ export default function ProjectsPage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     </>
-                  )}
+                  ) : null}
                   <div className="relative z-10 flex flex-wrap gap-2">
                     {project.categories.map(cat => (
                       <span
@@ -55,7 +68,7 @@ export default function ProjectsPage() {
                       </span>
                     ))}
                   </div>
-                  <p className={`relative z-10 text-sm font-medium ${project.coverImage ? "text-white/80" : "text-[#0a0a0a]/60"}`}>{project.date}</p>
+                  <p className={`relative z-10 text-sm font-medium ${project.coverVideo || project.coverImage ? "text-white/80" : "text-[#0a0a0a]/60"}`}>{project.date}</p>
                 </div>
 
                 {/* Content */}

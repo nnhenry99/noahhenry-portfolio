@@ -37,6 +37,8 @@ export interface Project {
   cardColor: string;
   /** Optional cover image shown on project cards */
   coverImage?: string;
+  /** Optional looping cover video shown on project cards, takes precedence over coverImage */
+  coverVideo?: string;
   hmw: string;
   overview: string;
   process: ProcessPhase[];
@@ -48,6 +50,92 @@ export interface Project {
 
 // Ordered chronologically: most recent first
 export const projects: Project[] = [
+  {
+    slug: "courtvision",
+    title: "CourtVision",
+    tagline: "Designed a live 2D basketball tracker that lets fans actually watch the game, not just read the score, without paying for a stream.",
+    subtitle:
+      "A live NBA and WNBA game tracker for fans who want the feeling of watching without a subscription, a blackout workaround, or their full attention. I led the UX strategy, interaction design, and front-end build, turning real-time play-by-play data into an animated court that works full screen or tucked into the corner of a monitor while you work.",
+    categories: ["Sports Technology", "UX Design"],
+    role: "UX Designer & Developer",
+    client: "Personal",
+    date: "Mar 2026 – Present",
+    cardColor: "bg-[rgb(255,224,204)]",
+    coverVideo: "/projects/courtvision/Cover.mp4",
+    hmw: "How might we give fans the feeling of watching a live game, with all the motion and tension that comes with it, without the cost and attention that video demands?",
+    overview:
+      "If you don't pay for a stream, following a live game means jumping between paid apps or settling for a text tracker that reads like a receipt. You get the score, but you lose the game. CourtVision swaps the video feed for a live animated court that shows where shots go up, who has the ball, and how the game is swinging. One idea drove every decision: show it, don't spell it out. The result is readable in about two seconds, works just as well shrunk into a side window as it does full screen, and keeps the deeper stats one tap away instead of crowding the main view.",
+    process: [
+      {
+        phase: "Research",
+        summary: "Looked at why free options fall short. Paid apps lock games behind subscriptions and blackouts, and text-based trackers are static enough that people stop paying attention. Talked through the real use cases: keeping a game on while working, following a second game while the TV shows another, and watching from a desk with no broadcast access.",
+      },
+      {
+        phase: "Define",
+        summary: "Named the core tension: people want the feeling of watching without the cost of video. From there I ranked features by what they actually give back to the fan. The court became the main event, the play feed supported it, and stats, shot charts, and odds moved into optional layers so the default view stayed calm.",
+      },
+      {
+        phase: "Design",
+        summary: "Designed the whole flow from the multi-game scoreboard into a single game. Score, clock, period, and possession live in a header that never moves, so the basics are always there. NBA and WNBA use the exact same court, markers, and interactions, since treating one league as the lesser version was never on the table.",
+      },
+      {
+        phase: "Test",
+        summary: "Ran the app against recorded games to pressure-test the design. I checked whether the layout held up when shrunk to a side window, whether the animation pacing felt right during live play versus stoppages, and whether score, possession, and momentum were still readable at a glance in both setups.",
+      },
+    ],
+    sections: [
+      {
+        heading: "Live Court Visualization",
+        body: "The animated court does the job video normally does. When a team takes over, their color sweeps the floor so possession is obvious without reading a word. Shots trail from the shooter to the rim and land as a make or a miss, which turns a stretch of plays into something you watch instead of a list of sentences you parse. This is the direct answer to \"show me the game, not just the score.\"",
+        media: { type: "video", src: "/projects/courtvision/LiveSequence.mp4" },
+      },
+      {
+        heading: "Side-Window Mode",
+        body: "Keeping a game up while doing something else is a real way people watch, so it got designed for on purpose rather than treated as a leftover breakpoint. Pinned to half a screen next to whatever you're actually working on, the score, possession, court, and momentum all still read at a glance.",
+        media: { type: "video", src: "/projects/courtvision/SideWindow.mp4" },
+      },
+      {
+        heading: "Momentum View",
+        body: "A text tracker can tell you a team went on a run, but it can't make you feel it. The momentum ribbon under the court shows the whole game as one shape, so you can see exactly where it turned and who has been controlling the pace. Scrubbing across it walks back through the run, and a toggle above the court swaps live play for a full shot chart whenever you want the bigger picture.",
+        media: { type: "video", src: "/projects/courtvision/Momentum.mp4" },
+      },
+      {
+        heading: "Live Prediction Odds",
+        body: "Odds add stakes without turning this into a betting app. Tabs at the top cover win probability, spread, total, and team totals, and each player's row carries their live prop line right next to their stats. It reads as a signal you glance at, not a workflow you have to work through.",
+        media: { type: "video", src: "/projects/courtvision/KalshiOdds.mp4" },
+      },
+      {
+        heading: "Relive Any Game",
+        body: "Games don't disappear once they're final. From the scoreboard you can drop into any finished game and get the whole story: every shot plotted on the court, the momentum swings quarter by quarter, and per-player breakdowns you can click through. It's the same layout as a live game, so there's nothing new to learn when you're catching up on something you missed.",
+        media: { type: "video", src: "/projects/courtvision/PastGames.mp4" },
+      },
+      {
+        heading: "Timeouts and Stoppages",
+        body: "Dead time is where a text tracker goes quiet. When play stops, the court steps back and a timeout card cycles through how the two teams actually compare: scoring by quarter, shooting efficiency, points in the paint, points off turnovers. It fills the gap with something worth reading instead of animating through a break that isn't happening.",
+        media: { type: "video", src: "/projects/courtvision/Timeout.mp4" },
+      },
+    ],
+    metrics: [
+      { label: "Leagues supported", value: "2", placeholder: false },
+      { label: "Game events visualized", value: "16", placeholder: false },
+      { label: "Shot zones mapped", value: "11", placeholder: false },
+      { label: "Live update interval", value: "5s", placeholder: false },
+    ],
+    learnings: [
+      {
+        title: "Motion Is the Product, Not Decoration",
+        body: "Fans compare this to watching, not reading, so the animation had to carry the experience. Ball movement, shot arcs, and momentum shifts weren't polish added at the end. They were the design material standing in for video.",
+      },
+      {
+        title: "Depth Has to Earn Its Place",
+        body: "Stats, shot charts, and odds only work if the default view stays quiet. Keeping them one tap away protected the glanceable home state while still giving engaged fans somewhere to dig in.",
+      },
+      {
+        title: "Small Windows Change What Matters",
+        body: "Designing for a corner of a monitor forced real hierarchy decisions. Score and possession had to survive at the smallest size first, and everything else had to earn its spot from there.",
+      },
+    ],
+  },
   {
     slug: "hapticcoach",
     title: "Haptic Strength Coach",
