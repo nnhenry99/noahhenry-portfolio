@@ -64,7 +64,7 @@ export const projects: Project[] = [
     coverVideo: "/projects/courtvision/Cover.mp4",
     hmw: "How might we give fans the feeling of watching a live game, with all the motion and tension that comes with it, without the cost and attention that video demands?",
     overview:
-      "If you don't pay for a stream, following a live game means jumping between paid apps or settling for a text tracker that reads like a receipt. You get the score, but you lose the game. CourtVision swaps the video feed for a live animated court that shows where shots go up, who has the ball, and how the game is swinging. One idea drove every decision: show it, don't spell it out. The result is readable in about two seconds, works just as well shrunk into a side window as it does full screen, and keeps the deeper stats one tap away instead of crowding the main view.",
+      "If you don't pay for a stream, following a live game means jumping between paid apps or settling for a text tracker that reads like a receipt. You get the score, but you lose the game. CourtVision swaps the video feed for a live animated court that shows where shots go up, who has the ball, and how the game is swinging. The result is readable in about two seconds, works just as well shrunk into a side window as it does full screen, and keeps the deeper stats one tap away instead of crowding the main view.",
     process: [
       {
         phase: "Research",
